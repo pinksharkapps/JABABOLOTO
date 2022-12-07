@@ -55,6 +55,10 @@ namespace JABABOLOTO
             _kamen.transform.Translate(new Vector3(0, -600, 0));
             Debug.Log(" Бултых! ");
             _ifKamenVBolote = true;
+
+            JABA jaba;
+            jaba = FindObjectOfType<JABA>();
+            jaba.Kvaknut();
         }
 
         private void KamenPodnjali()
@@ -62,12 +66,10 @@ namespace JABABOLOTO
             _kamen.transform.Translate(new Vector3(0, +600, 0));
             Debug.Log(" Вжух! ");
             _ifKamenVBolote = false;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            
+            JABA jaba;
+            jaba = FindObjectOfType<JABA>();
+            jaba.NoKvaknut();
         }
     }
 
