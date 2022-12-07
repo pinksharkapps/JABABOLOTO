@@ -33,9 +33,6 @@ namespace JABABOLOTO
         {
             _myKva.gameObject.SetActive(false); // убирает квакалки на старте, работает!
             
-            // на старте звучат жабы в разное время в пределах 1,5 секунды
-            float r = Random.Range(0f, 1.5f);
-            soundSrc.PlayDelayed(r);
         }
 
         
@@ -48,8 +45,9 @@ namespace JABABOLOTO
             _myKva.gameObject.SetActive(true); // показывает табличку "ква"
             Debug.Log("Жаба: Квааа");
             
-            // звучит жаба 
-            soundSrc.Play();  
+            // каждая жаба квакает с ииндивидуальным делеем
+            float r = Random.Range(0f, 0.5f);
+            soundSrc.PlayDelayed(r);
         }
         
         //-------2. метод неквакания вызывается при событии ЖабыУспокоились из файла болото ---
