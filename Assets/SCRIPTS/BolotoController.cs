@@ -22,9 +22,8 @@ namespace JABABOLOTO
             Bulllllk = BrositKamen; // в событие суем функцию кидания камня
             Debug.Log(" Болото на связи ");
 
-            _kamen.onClick.AddListener(
-                TupajaFunzijaDljaVyzovaSobytija); // слушает нажатие и выполнит Brositkamen если нажмут
-            // Bulk.Invoke(); тут не надо ибо сразу плюхнется
+            // слушает нажатие и выполнит Brositkamen если нажмут
+            _kamen.onClick.AddListener(TupajaFunzijaDljaVyzovaSobytija);
         }
 
         private void TupajaFunzijaDljaVyzovaSobytija()

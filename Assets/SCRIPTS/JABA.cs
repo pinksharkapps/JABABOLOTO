@@ -16,14 +16,20 @@ namespace JABABOLOTO
         [SerializeField] private GameObject _myKva; //руками назначила табличку "ква" в поле инспектора
         [SerializeField] private AudioSource soundSrc;
 
-        private BolotoController bolotoController;
+        private BolotoController _bolotoController;
+
+        private void Awake()
+        { 
+            _bolotoController = FindObjectOfType<BolotoController>();
+            _bolotoController.Bulllllk += Kvaknut;
+        }
 
         private void Start()
         {
             _myKva.gameObject.SetActive(false); // убирает квакалки на старте, работает!
 
-            //---проблема тут--КАК ОБРАТИТЬСЯ К СОБЫТИЮ ТО????
-            bolotoController = FindObjectOfType<BolotoController>();
+            
+           
 
             // _myKva.Bulllllk += Kvaknut(); //ЭТО НЕ РАБОТАЕТ - ПОЧЕМУ?????
             
