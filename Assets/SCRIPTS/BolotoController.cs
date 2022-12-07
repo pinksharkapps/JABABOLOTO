@@ -14,23 +14,15 @@ namespace JABABOLOTO
         [SerializeField] public Button _kamen; //добавила камень в поле кнопок инспектора
         private bool _ifKamenVBolote = false; //местная переменная "упал ли уже камень?"
 
-        public event Action Bulllllk; //пытаюсь создать событие - тут розовое но не работает нихрена
-
+        public event Action Bulllllk; //создать событие для жаб, оно вызывается в функции падения камня
+        public event Action VBoloteSpokojno; //событие по поднятию камня - жабы должны убрать свое ква
 
         void Start()
         {
-            Bulllllk = BrositKamen; // в событие суем функцию кидания камня
             Debug.Log(" Болото на связи ");
 
             // слушает нажатие и выполнит Brositkamen если нажмут
-            _kamen.onClick.AddListener(TupajaFunzijaDljaVyzovaSobytija);
-        }
-
-        private void TupajaFunzijaDljaVyzovaSobytija()
-        {
-            Debug.Log("До вызова инвока");
-            Bulllllk?.Invoke();
-            Debug.Log("После вызова инвока");
+            _kamen.onClick.AddListener(BrositKamen);
         }
 
         //------------------ визуально бросает и поднимает камень ------------------------------------
@@ -41,7 +33,7 @@ namespace JABABOLOTO
             {
                 KamenPadaet();
             }
-            // если камень внизуе - то поднимается, координаты потом..
+            // если камень внизу - то поднимается
             else
             {
                 KamenPodnjali();
@@ -55,9 +47,8 @@ namespace JABABOLOTO
             Debug.Log(" Бултых! ");
             _ifKamenVBolote = true;
 
-            JABA jaba;
-            jaba = FindObjectOfType<JABA>();
-            jaba.Kvaknut();
+            Bulllllk?.Invoke(); //вызываем событие - то бишь передаем жабам событие Бульк
+            
         }
 
         private void KamenPodnjali()
@@ -66,9 +57,15 @@ namespace JABABOLOTO
             Debug.Log(" Вжух! ");
             _ifKamenVBolote = false;
             
+            VBoloteSpokojno?.Invoke(); //вызываем у жаб функцию NoKvknut - для этого передаем жабам ивент Успокоились
+
+            //---------------- брутальный прямой метод использовали ранее -----------------
+            /*
             JABA jaba;
             jaba = FindObjectOfType<JABA>();
             jaba.NoKvaknut();
+            */
+             
         }
     }
 
